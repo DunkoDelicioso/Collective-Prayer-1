@@ -1,0 +1,46 @@
+html, body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+
+}
+
+p {
+  word-wrap: break-word;
+  width: 400px;
+  padding-left:20px;
+  padding-right:20px;
+  
+}
+
+h1 {
+  word-wrap: break-word;
+  width: 400px;
+  padding: 20px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+input, select, textarea {
+  color: white;
+  }
+
+  
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
+
+form {
+  padding: 10px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+canvas {
+  display: block;
+  padding: 20px;
+  padding-left:20px;
+  padding-right:20px;
+}

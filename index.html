@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Collective Prayer I</title>
+    <link rel="shortcut icon" type="image/jpg" href="This.jpg"/>
+</head>
+
+<body>
+    <div class="content">
+        <h1
+            style="color: white; text-align:center; font-size: 32px; font-family:Franklin Gothic Medium; font-size: 32px;">
+            Collective Prayer I</h1>
+
+        <p style="color: white; text-align:center; font-family:Didact Gothic; font-size: 12px;">
+
+            This sketch generates a unique image based on user input and the time.
+            This image is used to "Blockchain" your prayer, or at least generate a specific ID for it.
+            Once you have filled out this form you will be prompted to download an image, this image is your "receipt"
+            and can be used to retrieve your prayer at any time by emailing your image <a
+                href="mailto: duncanfigurski@gmail.com" style="color: Red">here</a>.<br>
+                <br>
+            Mobile users can start the animation by clicking on the text box below.
+            <br>
+            <br>
+
+            This prayer will be stored on a database,
+            by pressing submit you consent to the use of this prayer as data for a text GAN.
+            Your name will remain anonymous, and is only used to help identify you for prayer retrieval. <br>
+            <br>
+
+            Once we have recieved 1000 prayers we will feed your prayers to a machine learning algorithm
+            and use them to generate new prayers. The hope is that we will be able to generate something hopeful and
+            meaningful together.
+            The new prayers a fragment of each of us - yet compleltely severed from any one ego. <br>
+            <br>
+
+        </p>
+
+        <div id="sketch-container"></div>
+        
+
+        
+
+        <form id="frm" name="submit-to-google-sheet">
+            <input class="form-field" id="1" name="firstName" type="text" placeholder="First Name"
+                style="width: 400px; background:black; border: 0.5px solid gray;"><br>
+            <input class="form-field" id="2" name="lastName" type="text" placeholder="Last Name"
+                style="width: 400px; background:black; border: 0.5px solid gray;">"><br>
+            <input class="form-field" id="3" name="prayer" type="textarea" placeholder="Your Prayer"
+                style="width: 400px; background:black; border: 0.5px solid gray; height: 100px;">"><br>
+            <input class="form-field" id="4" name="email" type="email" placeholder="Email"
+                style="width: 400px; background:black; border: 0.5px solid gray;"> required><br>
+            <button id="button" type="submit" class="button"
+                style="width: 50; color:gray; background:black; border: 0.5px solid gray; padding: 5px;">Send</button><br>
+
+            <p id="text" style="color: white; text-align:center; font-family:Didact Gothic; font-size: 18px;"></p>
+
+        </form>
+
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz5MzpWdOpxbdqe2EecA6W9wVrAoUMoEg5pxkyQl7jm-GLmWg0fvxP29iCad8jQIf9u8A/exec'
+            const form = document.forms['submit-to-google-sheet']
+
+
+            form.addEventListener('submit', e => {
+
+                song.rate(0.3);
+                background(255);
+                line(width/2, 100, width/2, 400)
+                line(100, 200, 300, 200)
+                line(100, 300, 300, 300)
+
+                
+
+
+
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(response => {
+                        console.log('Success!', response); 
+                        resetForm();
+                })
+                    .catch(error => console.error('Error!', error.message))
+            })
+
+            function resetForm(){
+                document.getElementById('frm').reset();
+            }
+
+
+        </script>
+
+    </div>
+    <script src="sketch.js"></script>
+</body>
+
+</html>
